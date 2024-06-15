@@ -12,13 +12,23 @@ namespace FreteVendasTestesXUnit.Negocio
 
         public decimal CalcularMediaMensal(short mes, short ano)
         {
-            IList<Vendas> vendas = _vendasRepo.BuscarVendas(mes, ano);
+            try
+            {
+                IList<Vendas> vendas = _vendasRepo.BuscarVendas(mes, ano);
 
-            decimal vendasMensal = (vendas.Sum(s => s.Valor)) / vendas.Count;
+                if (vendas is null || vendas.Count() == 0)
+                    throw new Exception("Nenhuma venda para o mês selecionado.");
 
-            decimal resultado = Math.Round(vendasMensal, 2);
+                decimal vendasMensal = (vendas.Sum(s => s.Valor)) / vendas.Count;
 
-            return resultado;
+                decimal resultado = Math.Round(vendasMensal, 2);
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
