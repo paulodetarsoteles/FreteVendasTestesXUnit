@@ -7,6 +7,8 @@ namespace FreteVendasTestesXUnit.Repositorio.Repositorios
     {
         public IList<Vendas> BuscarVendas(short mes, short ano)
         {
+            #region Criação das instâncias
+
             var novaVenda1 = new Vendas()
             {
                 Data = new DateTime(2021, 04, 02),
@@ -32,14 +34,20 @@ namespace FreteVendasTestesXUnit.Repositorio.Repositorios
                 novaVenda3
             };
 
-            List<Vendas> vendasFiltradas = new();
+            #endregion
 
-            vendasFiltradas = listaVendas.Where(l => l.Data.Month == mes).ToList();
+            List<Vendas> resultado = [];
 
-            if (vendasFiltradas.Any())
-                return vendasFiltradas;
+            resultado = listaVendas.Where(l => l.Data.Month == mes).ToList();
+
+            if (resultado is not null && resultado.Count != 0)
+            {
+                return resultado;
+            }
             else
+            {
                 return [];
+            }
         }
     }
 }
