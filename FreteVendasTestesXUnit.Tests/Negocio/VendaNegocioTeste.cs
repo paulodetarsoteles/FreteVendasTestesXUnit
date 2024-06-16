@@ -42,10 +42,28 @@ namespace FreteVendasTestesXUnit.Tests.Negocio
             #endregion
 
             _vendasRepositorioMock = new Mock<IVendasRepositorio>();
+
+            _vendasRepositorioMock.Setup(v => v.BuscarVendas(It.IsAny<short>()))
+                .Returns(listaVendas);
+
             _vendasRepositorioMock.Setup(v => v.BuscarVendas(It.IsAny<short>(), It.IsAny<short>()))
                 .Returns(listaVendas);
 
             _vendasNegocio = new VendasNegocio(_vendasRepositorioMock.Object);
+        }
+
+        [Fact]
+        public void CalcularVendasTotalPorAno()
+        {
+            //Arrange
+            short ano = 2021;
+            decimal resultadoEsperado = 600.00m;
+
+            //Act 
+            decimal resultadoMetodo = _vendasNegocio.CalcularVendasTotalPorAno(ano);
+
+            //Assert 
+            Assert.Equal(resultadoEsperado, resultadoMetodo);
         }
 
         [Fact]
