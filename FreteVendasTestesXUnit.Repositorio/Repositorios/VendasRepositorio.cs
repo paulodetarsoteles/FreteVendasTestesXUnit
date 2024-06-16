@@ -27,11 +27,53 @@ namespace FreteVendasTestesXUnit.Repositorio.Repositorios
                 Valor = 353.50m
             };
 
+            var novaVenda4 = new Vendas()
+            {
+                Data = new DateTime(2021, 04, 20),
+                Valor = 353.50m
+            };
+
+            var novaVenda5 = new Vendas()
+            {
+                Data = new DateTime(2021, 05, 20),
+                Valor = 30.00m
+            };
+
+            var novaVenda6 = new Vendas()
+            {
+                Data = new DateTime(2021, 05, 25),
+                Valor = 53.25m
+            };
+
+            var novaVenda7 = new Vendas()
+            {
+                Data = new DateTime(2021, 07, 10),
+                Valor = 1353.50m
+            };
+
+            var novaVenda8 = new Vendas()
+            {
+                Data = new DateTime(2021, 09, 30),
+                Valor = 300.50m
+            };
+
+            var novaVenda9 = new Vendas()
+            {
+                Data = new DateTime(2021, 09, 30),
+                Valor = 200.00m
+            };
+
             var listaVendas = new List<Vendas>()
             {
                 novaVenda1,
                 novaVenda2,
-                novaVenda3
+                novaVenda3,
+                novaVenda4,
+                novaVenda5,
+                novaVenda6,
+                novaVenda7,
+                novaVenda8,
+                novaVenda9
             };
 
             #endregion
